@@ -7,11 +7,11 @@ def main():
     is_running = True
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
-    # Creating a clock and delta time instances
+    # create a clock and delta time instances
     clock = pygame.time.Clock()
     dt = 0
 
-    #Creating a player instance
+    # create a player instance
     x = SCREEN_WIDTH / 2
     y = SCREEN_HEIGHT / 2
     player = Player(x, y) 
@@ -20,9 +20,13 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
-            
+        
+        # draw the background    
         screen.fill(000000)
+        # handle the player
+        player.update(dt)
         player.draw(screen)
+        # update the screen
         pygame.display.flip()
         
         # limit the framerate to 60 fps
